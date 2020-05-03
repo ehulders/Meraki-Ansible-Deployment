@@ -10,13 +10,13 @@
 
       - name: csv-read
         read_csv:
-          path: BP_PFS-B_Devices_v4.csv
+          path: "{{ path-device }}"
           delimiter: ','
         register: devices
 
       - name: csv-read
         read_csv:
-          path: ip-addressing.csv
+          path: "{{ path-addressing }}"
           delimiter: ','
         register: addressing
 

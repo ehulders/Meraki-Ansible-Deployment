@@ -22,6 +22,14 @@ Secondly the way Meraki supports templates allows us to abstract away much of th
 
 ## Prerequsites
 
+To fully replicate this guide you will need a Meraki network which isn't something we can quickly
+
+You will need a machine with Ansible installed, a basic working knowledge of Ansible is preferred for this guide. Please see the following repositories which also cover Ansible:
+
+* 
+*
+*
+
 ## Ansible
 
 ## CICD 

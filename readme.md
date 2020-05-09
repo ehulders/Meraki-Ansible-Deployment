@@ -16,7 +16,7 @@ One of the things that makes this so simple is the Meraki platform which provide
 
 Secondly the way Meraki supports templates allows us to abstract away much of the configuration in our playbook and automate much of the config simply by attaching a template. All we have to do is build a few custom tasks for firewall rules and IP Addressing which is specific to our branch.
 
-Breakdown of our playbook
+## Breakdown of playbook
 
 Watch this short video here where I explain the process.
 

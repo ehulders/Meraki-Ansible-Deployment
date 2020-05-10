@@ -22,9 +22,15 @@ One of the things that makes this so simple is the Meraki platform, which provid
 
 Secondly the way Meraki supports templates allows us to abstract away much of the configuration in our playbook and automate much of the config simply by attaching a template. All we have to do is build a few custom tasks for firewall rules and IP Addressing which is specific to our branch.
 
+## CICD 
+
+As we've demonstrated in our network above this could form part of a CICD pipeline to automate the deployment of branches. The devices and network elements can be defined through a YAML file like the example below. As new files are added to the source control for each branch we can automate CICD functionality (e.g. Gitlab actions) to automatically run the the playbook and deploy our branches.
+
+<YAML EXAMPLE>
+
 ## Prerequsites
 
-To fully replicate this guide you will need a Meraki network which isn't something we can quickly
+To fully replicate this guide you will need a Meraki network which isn't something we can quickly spin up through virtual means such as DevNet sandboxes. However if you have a Meraki device, it's possible to replicate with some minor tweaks to the playbook.
 
 You will need a machine with Ansible installed, a basic working knowledge of Ansible is preferred for this guide. Please see the following repositories which also cover Ansible:
 
@@ -34,8 +40,6 @@ You will need a machine with Ansible installed, a basic working knowledge of Ans
 
 ## Ansible
 
-## CICD 
-
 ## Breakdown of playbook
 
 Watch this short video here where I explain the process.
@@ -43,3 +47,5 @@ Watch this short video here where I explain the process.
 And there we have it, showing how you as an IT team can standardise your configuration tooling and automate your branch environment by bringing up new sites in a fraction of a time with minimal human intervention.
 
 ## Running playbook
+
+## Autoamate deployment with Github Actions

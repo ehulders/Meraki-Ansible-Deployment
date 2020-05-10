@@ -16,6 +16,8 @@ How this would actually be implemented in an organisation will differ the handov
 
 In this example we'll be showing how we use a YAML file with the required details for our networks and devices this will populate the playbook we've build and allow it to run carrying out all the tasks required to set up the networks. For a full breakdown of the tasks in the playbook skip ahead to the 'playbook walkthrough' section. For posterity, in the example directory we've also included a read from CSV example playbook also.
 
+![](images/workflow.png)
+
 One of the things that makes this so simple is the Meraki platform, which provides us two main benefits here that are quite unique. Firstly Meraki supports ZTP natively therefore will allow the devices to call home as soon as they receive an internet connection aslong as their serial number has been registered to an organisation, which we do in our playbook. This will then allow the devices to pull down a config thats already been set well in advance and we don’t have to rely on our playbook getting individual device connectivity, the dashboard has the device configs stored waiting for the device to announce itself.
 
 Secondly the way Meraki supports templates allows us to abstract away much of the configuration in our playbook and automate much of the config simply by attaching a template. All we have to do is build a few custom tasks for firewall rules and IP Addressing which is specific to our branch.

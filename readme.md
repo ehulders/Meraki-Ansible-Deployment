@@ -2,7 +2,7 @@
 
 When it comes to the enterprise more and more organisations are looking to standardise their tooling for the configuration and management of these networks. An increasingly popular tool is the use of Ansible as part of a wider service chain to standardise what deployments look like.
 
-In this short guide I will be showing how we can use Ansible and Cisco Meraki and potentially a third party service management system such as Jira or Service now to automate the deployment on branches the Meraki dashboards all the way from creation of networks, claiming of devices, binding of network templates and updating network specific details
+In this short guide I will be showing how we can use Ansible and Cisco Meraki and potentially a third party service management system such as Jira or ServiceNow to automate the deployment on branches the Meraki dashboards all the way from creation of networks, claiming of devices, binding of network templates and updating network specific details
 
 This kind of usecase is suitable for any kind of branch environment where networks are likely to be simple but the numbers of actual physical locations could go into the thousands. With our workflow we’re able to automate the whole logical deployment with the creation of a single ticket. It’s typically not feasible to have a dedicated network professional visit each location to carry out the install. With this kind of solution the deployment can be a mostly physical job where all thats required it to plug in the cables and test connectivity as much of the deployment will have been done before the infrastructure probably arrives at its destination.
 

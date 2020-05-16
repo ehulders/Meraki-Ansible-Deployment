@@ -95,13 +95,13 @@ In this scenario we're also outlining the IP addressing and subnets through an a
 
 ## Prerequsites
 
-To fully replicate this guide you will need a Meraki network which isn't something we can quickly spin up through virtual means such as DevNet sandboxes. However if you have a Meraki device, it's possible to replicate with some minor tweaks to the playbook.
+To fully replicate this guide you will need a Meraki network which isn't something we can quickly spin up through virtual means such as DevNet sandboxes. However if you have a Meraki device, it's possible to replicate quite easily by building up your own YAML datastructures to meet the devices you have, the template you wish to deploy and he IP addressing for your environment.
 
 You will need a machine with Ansible installed, a basic working knowledge of Ansible is preferred for this guide. Please see the following repositories which also cover Ansible:
 
-* 
-*
-*
+* [Getting started with Ansible]()
+* [Deploying ASAv in AWS with Ansible]()
+
 
 ## Ansible
 

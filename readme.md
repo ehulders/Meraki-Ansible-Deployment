@@ -24,9 +24,9 @@ Secondly the way Meraki supports templates for network configuration allows us t
 
 ## CICD 
 
-As we've demonstrated in our network above this could form part of a CICD pipeline to automate the deployment of branches. The devices and network elements can be defined through a YAML file like the example below. As new files are added to the source control for each branch we can automate CICD functionality (e.g. Gitlab actions) to automatically run the the playbook and deploy our branches.
+As we've demonstrated in our network above this could form part of a CICD pipeline to automate the deployment of branches. The devices and network elements can be defined through a YAML file like the example below. As new files are added to the source control for each branch we can automate CICD functionality (e.g. Gitlab CICD or Github actions) to automatically run the the playbook and deploy our branches.
 
-In this scenario we can define the devices to be added to our network and the tempalte to be bound from our YAML file definition. Like the below example where we define 4 devices to be added to the network.
+In this scenario we can define the devices to be added to our network and the template to be bound from our YAML file definition. Like the below example where we define 4 devices to be added to the network, the Ansible playbook will read these files (included in the repo) and use the variables to carry out the required tasks in the playbook.
 
 ```
 ---
@@ -64,7 +64,7 @@ In this scenario we can define the devices to be added to our network and the te
 
 ```
 
-In this scenario we're also outlining the IP addressing and subnets through an accompanying YAML file. As can be seen below.
+In this scenario we're also outlining the IP addressing and subnets through an accompanying YAML file. As can be seen below, these override the VLANs for the network which the original template defines.
 
 ```
 ---
@@ -105,7 +105,7 @@ You will need a machine with Ansible installed, a basic working knowledge of Ans
 
 ## Ansible
 
-## Breakdown of playbook
+### Breakdown of playbook
 
 Watch this short video here where I explain the process.
 
@@ -195,6 +195,8 @@ And there we have it, showing how you as an IT team can standardise your configu
 
 ```
 
-## Running playbook
+And there we have it, showing how you as an IT team can standardise your configuration tooling and automate your branch environment by bringing up new sites in a fraction of a time with minimal human intervention.
 
-## Autoamate deployment with Github Actions
+### Running playbook
+
+### Automate deployment with Github Actions

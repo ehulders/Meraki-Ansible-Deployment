@@ -29,87 +29,62 @@ As we've demonstrated in our network above this could form part of a CICD pipeli
 ```
 ---
  device-1:
-    network_name: PFS-B
-    template_name: PFS-Template-S
-    device_name: pfs-b_mx1
+    network_name: Branch-1321
+    template_name: Branch-Template-Small
+    device_name: br_1321_mx1
     device_type: MX67C-WW
-    serial_no: Q2JY-F2KP-JWLM
-    mac-address: 98:18:88:c7:ec:5b
+    serial_no: XXXX-XXXX-XXXX
     vlan_id: 1
-    ip_address: 100.20.80.1
-    subnet_mask: 255.255.255.0
-    gateway_ip: n/a
-    dns_server1: 208.67.222.222
-    dns_server2: 208.67.220.220
 
  device-2:
-    network_name: PFS-B
-    template_name: PFS-Template-S
-    device_name: pfs-b_sw1
+    network_name: Branch-1321
+    template_name: Branch-Template-Small
+    device_name: br_1321_sw1
     device_type: MS120-8LP
-    serial_no: Q2BX-BMSG-74QE
-    mac-address: 34:56:fe:cc:89:38
+    serial_no: XXXX-XXXX-XXXX
     vlan_id: 1
-    ip_address: 100.20.80.11
-    subnet_mask: 255.255.255.0
-    gateway_ip: 100.20.80.1
-    dns_server1: 208.67.222.222
-    dns_server2: 208.67.220.220
 
  device-3:
-    network_name: PFS-B
-    template_name: PFS-Template-S
-    device_name: pfs-b_ap1
-    device_type: MR70
-    serial_no: Q3AJ-9S8K-WN5R
-    mac-address: 98:18:88:bc:96:13
-    vlan_id: 1
-    ip_address: 100.20.80.21
-    subnet_mask: 255.255.255.0
-    gateway_ip: 100.20.80.1
-    dns_server1: 208.67.222.222
-    dns_server2: 208.67.220.220
-
- device-4:
-    network_name: PFS-B
-    template_name: PFS-Template-S
-    device_name: pfs-b_ap2
+    network_name: Branch-1321
+    template_name: Branch-Template-Small
+    device_name: br_1321_ap1
     device_type: MR70
     serial_no: XXXX-XXXX-XXXX
+    vlan_id: 1
+
+ device-4:
+    network_name: Branch-1321
+    template_name: Branch-Template-Small
+    device_name: br_1321_ap2
+    device_type: MR70
     mac-address: e0:cb:bc:b9:f7:24
     vlan_id: 1
-    ip_address: 10.10.80.22
-    subnet_mask: 255.255.255.0
-    gateway_ip: 100.20.80.1
-    dns_server1: 208.67.222.222
-    dns_server2: 208.67.220.220
-
 
 ```
 
 ```
 ---
  subnet-1:
-    network_name: PFS-B
-    template_name: PFS-Template-S
-    name: 1_Management_Zone_policy
+    network_name: Branch-1321
+    template_name: Branch-Template-Small
+    name: VLAN_management
     vlan_id: 1
     subnet: 100.20.80.0/24
     default_gw: 100.20.80.1
 
  subnet-2:
-    network_name: PFS-B
-    template_name: PFS-Template-S
-    name: 1C_Payment_Zone_policy
+    network_name: Branch-1321
+    template_name: Branch-Template-Small
+    name: VLAN_Payments
     vlan_id: 100
     subnet: 192.168.10.0/29
     default_gw: 192.168.10.1
 
  subnet-3:
-    network_name: PFS-B
-    template_name: PFS-Template-S
-    name: 2_Business_Zone_policy
-    vlan_id: 102
+    network_name: Branch-1321
+    template_name: Branch-Template-Small
+    name: VLAN_Corp
+    vlan_id: 101
     subnet: 100.20.20.0/24
     default_gw: 100.20.20.9
 ```

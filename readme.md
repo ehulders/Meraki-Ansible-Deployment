@@ -199,4 +199,14 @@ And there we have it, showing how you as an IT team can standardise your configu
 
 ### Running playbook
 
+Now lets run the playbook, to do this manually this can be done simply with the command executed on your local workstation.
+
+```
+ansible-playbook deploy-branch-readyaml.yaml
+```
+
+The playbook will execute as per the animation below and create the required resources in the Meraki dashboard which you can now verify.
+
 ### Automate deployment with Github Actions
+
+A more preferred option may be to automate this deployment process with a CICD pipeline.

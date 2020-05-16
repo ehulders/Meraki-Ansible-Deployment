@@ -59,7 +59,6 @@ In this scenario we can define the devices to be added to our network and the te
     template_name: Branch-Template-Small
     device_name: br_1321_ap2
     device_type: MR70
-    mac-address: e0:cb:bc:b9:f7:24
     vlan_id: 1
 
 ```

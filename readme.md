@@ -26,6 +26,8 @@ Secondly the way Meraki supports templates allows us to abstract away much of th
 
 As we've demonstrated in our network above this could form part of a CICD pipeline to automate the deployment of branches. The devices and network elements can be defined through a YAML file like the example below. As new files are added to the source control for each branch we can automate CICD functionality (e.g. Gitlab actions) to automatically run the the playbook and deploy our branches.
 
+In this scenario we can define the devices to be added to our network and the tempalte to be bound from our YAML file definition. Like the below example where we define 4 devices to be added to the network.
+
 ```
 ---
  device-1:
@@ -61,6 +63,8 @@ As we've demonstrated in our network above this could form part of a CICD pipeli
     vlan_id: 1
 
 ```
+
+In this scenario we're also outlining the IP addressing and subnets through an accompanying YAML file. As can be seen below.
 
 ```
 ---
@@ -106,6 +110,90 @@ You will need a machine with Ansible installed, a basic working knowledge of Ans
 Watch this short video here where I explain the process.
 
 And there we have it, showing how you as an IT team can standardise your configuration tooling and automate your branch environment by bringing up new sites in a fraction of a time with minimal human intervention.
+
+```
+---
+- name: meraki deployment
+  hosts: localhost
+  vars:
+    auth_key: {{}}
+    org_name: Meraki-Demo
+
+  tasks:
+
+    - name: include variables for devices
+      include_vars:
+        file: devices.yaml
+        name: devices
+
+
+    - name: include variables for addresses
+      include_vars:
+        file: addresses.yaml
+        name: addresses
+
+
+    - name: Create site network
+      meraki_network:
+        auth_key: "{{ auth_key }}"
+        state: present
+        org_name: "{{ org_name }}"
+        name: "{{ item.value.network_name }}"
+        type:
+          - switch
+          - appliance
+          - wireless
+      register: off_network
+      loop: "{{ lookup('dict', devices) }}"
+      when: "'device-1' in item.key"
+
+    - name: Add devices to Network
+      meraki_device:
+        auth_key: "{{ auth_key }}"
+        org_name: "{{ org_name }}"
+        net_id: "{{ off_network.results.0.data.id }}"
+        state: present
+        serial: "{{ item.value.serial_no }}"
+      register: off_add_dev1
+      loop: "{{ lookup('dict', devices) }}"
+
+    - name: Update device Information
+      meraki_device:
+        auth_key: "{{ auth_key }}"
+        org_name: "{{ org_name }}"
+        net_id: "{{ off_network.results.0.data.id }}"
+        state: present
+        serial: "{{ item.value.serial_no }}"
+        name: " {{ item.value.device_name }}"
+        move_map_marker: no
+      register: off_update_dev1
+      loop: "{{ lookup('dict', devices) }}"
+
+
+    - name: Bind a template from a network
+      meraki_config_template:
+        auth_key: "{{ auth_key }}"
+        state: present
+        org_name: "{{ org_name }}"
+        net_name: "{{ item.value.network_name }}"
+        config_template: "{{ item.value.template_name }}"
+      delegate_to: localhost
+      loop: "{{ lookup('dict', devices) }}"
+      when: "'device-1' in item.key"
+
+    - name: Add subnets
+      meraki_vlan:
+        auth_key: "{{ auth_key }}"
+        org_name: "{{ org_name }}"
+        net_id: "{{ off_network.results.0.data.id}}"
+        state: present
+        name: "{{ item.value.name }}"
+        vlan_id: "{{ item.value.vlan_id }}"
+        subnet: "{{ item.value.subnet }}"
+        appliance_ip: "{{ item.value.default_gw }}"
+      loop: "{{ lookup('dict', addresses) }}"
+
+```
 
 ## Running playbook
 

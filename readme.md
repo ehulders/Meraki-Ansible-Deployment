@@ -116,7 +116,6 @@ And there we have it, showing how you as an IT team can standardise your configu
 - name: meraki deployment
   hosts: localhost
   vars:
-    auth_key: {{}}
     org_name: Meraki-Demo
 
   tasks:
@@ -126,12 +125,10 @@ And there we have it, showing how you as an IT team can standardise your configu
         file: devices.yaml
         name: devices
 
-
     - name: include variables for addresses
       include_vars:
         file: addresses.yaml
         name: addresses
-
 
     - name: Create site network
       meraki_network:

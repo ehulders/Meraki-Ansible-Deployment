@@ -1,10 +1,10 @@
 # Meraki Ansible Deployment Guide
 
-When it comes to the enterprise more and more organisations are looking to standardise their tooling for the configuration and management of these networks. An increasingly popular tool is the use of Ansible as part of a wider service chain to standardise what deployments look like.
+When it comes to the enterprise more and more organisations are looking to standardise their tooling for the configuration and management of these networks. An increasingly popular tool is the use of Ansible as part of a wider service chain to standardise what deployments look like across multiple different vendors and platforms.
 
-In this short guide I will be showing how we can use Ansible and Cisco Meraki and potentially a third party service management system such as Jira or ServiceNow to automate the deployment on branches the Meraki dashboards all the way from creation of networks, claiming of devices, binding of network templates and updating network specific details
+In this short guide I will be showing how we can use Ansible and Cisco Meraki to automate the deployment on branches the Meraki dashboards all the way from creation of networks, claiming of devices, binding of network templates and updating network specific details. This integration could also include a ITSM system such as ServiceNow or Jira which would have a handoff to Ansible to generate a data structure such as a CSV or yaml file which Ansible will use to create the branches.
 
-This kind of usecase is suitable for any kind of branch environment where networks are likely to be simple but the numbers of actual physical locations could go into the thousands. With our workflow we’re able to automate the whole logical deployment with the creation of a single ticket. It’s typically not feasible to have a dedicated network professional visit each location to carry out the install. With this kind of solution the deployment can be a mostly physical job where all thats required it to plug in the cables and test connectivity as much of the deployment will have been done before the infrastructure probably arrives at its destination.
+This kind of usecase is suitable for any kind of branch environment where networks are likely to be simple but the numbers of actual physical locations could go into the thousands. With this workflow we’re able to automate the whole logical deployment with the creation of a single ticket. It’s typically not feasible to have a dedicated network professional visit each location to carry out the install. With this kind of solution the deployment can be a mostly physical job where all thats required it to plug in the cables and test connectivity as much of the deployment will have been done before the infrastructure even arrives at its destination.
 
 ## The workflow
 
@@ -18,7 +18,7 @@ In this example we'll be showing how we use a YAML file with the required detail
 
 ![](images/workflow.png)
 
-One of the things that makes this so simple is the Meraki platform, which provides us two main benefits here that are quite unique. Firstly Meraki supports ZTP natively therefore will allow the devices to call home as soon as they receive an internet connection aslong as their serial number has been registered to an organisation, which we do in our playbook. This will then allow the devices to pull down a config thats already been set well in advance and we don’t have to rely on our playbook getting individual device connectivity, the dashboard has the device configs stored waiting for the device to announce itself.
+One of the things that makes this such a simple workflow is the Meraki platform, which provides us two main benefits here that are quite unique. Firstly Meraki supports ZTP natively therefore will allow the devices to call home as soon as they receive an internet connection aslong as their serial number has been registered to an organisation, which we do in our playbook. This will then allow the devices to pull down a config thats already been set well in advance and we don’t have to rely on our playbook getting individual device connectivity, the dashboard has the device configs stored waiting for the device to announce itself.
 
 Secondly the way Meraki supports templates allows us to abstract away much of the configuration in our playbook and automate much of the config simply by attaching a template. All we have to do is build a few custom tasks for firewall rules and IP Addressing which is specific to our branch.
 

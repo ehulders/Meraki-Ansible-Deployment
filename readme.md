@@ -14,7 +14,7 @@ How this would actually be implemented in an organisation will differ the handov
 * Configuration files per network built and commited to a source control system, kicking off a CICD process
 * Part of an Ansible Tower workflow
 
-In this example we'll be showing how we use a YAML file with the required details for our networks and devices this will populate the playbook we've build and allow it to run carrying out all the tasks required to set up the networks. For a full breakdown of the tasks in the playbook skip ahead to the 'playbook walkthrough' section. For posterity, in the example directory we've also included a read from CSV example playbook also.
+In this example we'll be showing how we use a YAML file with the required details for our networks and devices this will populate the playbook we've build and allow it to run carrying out all the tasks required to set up the networks. For a full breakdown of the tasks in the playbook skip ahead to the 'playbook walkthrough' section.
 
 ![](images/workflow.png)
 

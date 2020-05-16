@@ -20,7 +20,7 @@ In this example we'll be showing how we use a YAML file with the required detail
 
 One of the things that makes this such a simple workflow is the Meraki platform, which provides us two main benefits here that are quite unique. Firstly Meraki supports ZTP natively therefore will allow the devices to call home as soon as they receive an internet connection aslong as their serial number has been registered to an organisation, which we do in our playbook. This will then allow the devices to pull down a config thats already been set well in advance and we don’t have to rely on our playbook getting individual device connectivity, the dashboard has the device configs stored waiting for the device to announce itself.
 
-Secondly the way Meraki supports templates allows us to abstract away much of the configuration in our playbook and automate much of the config simply by attaching a template. All we have to do is build a few custom tasks for firewall rules and IP Addressing which is specific to our branch.
+Secondly the way Meraki supports templates for network configuration allows us to abstract away much of the  manual configuration in our playbook and automate much of the deployment simply by attaching a template. All we have to do is build a few custom tasks for firewall rules and IP Addressing which is specific to our branch.
 
 ## CICD 
 

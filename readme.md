@@ -89,7 +89,7 @@ In this scenario we're also outlining the IP addressing and subnets through an a
     template_name: Branch-Template-Small
     name: VLAN_Corp
     vlan_id: 101
-    subnet: 100.20.20.0/24
+    subnet: 100.20.20.8/29
     default_gw: 100.20.20.9
 ```
 

@@ -13,6 +13,6 @@ for dir in */; do
    ls deploy
    cp ../../deploy-branch-readyaml.yaml deploy/deploy-branch-readyaml.yaml
    ansible-playbook ./deploy/deploy-branch-readyaml.yaml --extra-vars "auth=b9cfb41fbf828497f950d6d8c4ead2dd29cc715c org=Demo" -vvvv
-   cd ../..
+   cd ..
 done
  

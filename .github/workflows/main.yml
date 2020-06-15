@@ -16,10 +16,6 @@ jobs:
       uses: ansible/ansible-lint-action@master
       with:
         playbooks/deploy-branch-readyaml.yaml
-        targets: ""
-        # [optional]
-        # Arguments to override a package and its version to be set explicitly.
-        # Must follow the example syntax.
         override-deps: |
           ansible==2.9
           ansible-lint==4.2.0

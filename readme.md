@@ -249,9 +249,28 @@ jobs:
 
 One of the biggest challenges
 
-Luckily, Github actions solves this
+Luckily, Github actions solves this by allowing you to create secret variables for a repo which can be loaded in at runtime. Go to your repo settings and create a variable called "MERAKIAPI". As you can see below in the last action of our playbook we end up loading this as an environment variable called 'auth' which your shell script that calls the Ansible playbook runs.
 
+```
+    - shell: bash
+      env:
+        auth: ${{ secrets.MERAKIAPI }}
+      run: sh ./scripts/entrypoint.sh
+```
 
 ### Running
 
+Now all that's left to do is get things running
+
+```
+name: CICD-Meraki
+
+
+on:
+  push:
+    branches: 
+      - master
+    paths:
+      - 'playbooks/vars/**'
+```
 

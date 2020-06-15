@@ -1,8 +1,8 @@
 ---
  device-1:
-    network_name: PFS-B
+    network_name: Branch1321
     template_name: Demo-Template
-    device_name: pfs-b_mx1
+    device_name: 1321_mx1
     device_type: MX68
     serial_no: Q2KY-FNZB-5LS2
     mac-address: 98:18:88:c7:ec:5b

@@ -2,9 +2,13 @@
 
 When it comes to the enterprise more and more organisations are looking to standardise their tooling for the configuration and management of these networks. An increasingly popular tool is the use of Ansible as part of a wider service chain to standardise what deployments look like across multiple different vendors and platforms.
 
-In this short guide I will be showing how we can use Ansible and Cisco Meraki to automate the deployment on branches the Meraki dashboards all the way from creation of networks, claiming of devices, binding of network templates and updating network specific details. This integration could also include a ITSM system such as ServiceNow or Jira which would have a handoff to Ansible to generate a data structure such as a CSV or yaml file which Ansible will use to create the network configuration.
+In this short guide I will be showing how we can use Ansible and Cisco Meraki to automate the deployment on branches the Meraki dashboards all the way from creation of networks, claiming of devices, binding of network templates and updating network specific details. This integration could also include a ITSM system such as ServiceNow or Jira which would have a handoff to Ansible to generate a data structure such as a CSV or YAML file which Ansible will use to create the network configuration in our examples
 
 This kind of usecase is suitable for any kind of environment where branch networks are likely to be simple but the numbers of actual physical locations could go into the thousands and the challenge sits in the deployment. It’s typically not feasible to have a dedicated network professional visit each location to carry out the install. With this kind of solution the deployment can be a mostly physical job where all thats required it to plug in the cables and test connectivity as much of the deployment will have been done before the infrastructure even arrives at its destination. With this workflow we’re able to automate the whole logical deployment with a single playbook that can be triggered through a CI pipeline or ITSM ticket/request.
+
+```
+Please note: This repo is intended for a demonstration and is not a 'production ready' CICD pipeline tha can be deployed, they're arre parts of this project that are missing such as network testing and robustness improvements that should be made before this could go into production.
+```
 
 ## The workflow
 
@@ -26,7 +30,7 @@ Secondly the way Meraki supports templates for network configuration allows us t
 
 As we've demonstrated in our network above this could form part of a CICD pipeline to automate the deployment of branches. The devices and network elements can be defined through a YAML file like the example below. As new files are added to the source control for each branch we can automate CICD functionality (e.g. Gitlab CICD or Github actions) to automatically run the the playbook and deploy our branches.
 
-In this scenario we can define the devices to be added to our network and the template to be bound from our YAML file definition. Like the below example where we define 4 devices to be added to the network, the Ansible playbook will read these files (included in the repo) and use the variables to carry out the required tasks in the playbook.
+In this scenario we can define the devices to be added to our network and the template to be bound from our YAML file definition. Like the below example where we define 4 devices to be added to the network, the Ansible playbook will read these files (included in the repo) and use the variables to carry out the required tasks in the playbook. Should you wish to add more or less devices to your network you just need to edit the YAML file with the appropriate number of devices.
 
 ```
 ---
@@ -64,8 +68,7 @@ In this scenario we can define the devices to be added to our network and the te
 
 ```
 
-In this scenario we're also outlining the IP addressing and subnets through an accompanying YAML file. As can be seen below, these override the VLANs for the network which the original template defines.
-
+In this scenario we're also outlining the IP addressing and subnets through an accompanying YAML file. As can be seen below, these override the VLANs for the network which the original template defines. Please note, if you do not have the correct number of subjects and the names aren't correct for your corresponding template this is likely to fail
 ```
 ---
  subnet-1:
@@ -73,9 +76,9 @@ In this scenario we're also outlining the IP addressing and subnets through an a
     template_name: Branch-Template-Small
     name: VLAN_management
     vlan_id: 1
-    subnet: 100.20.80.0/24
-    default_gw: 100.20.80.1
-
+    subnet: 10.0.0.0/24
+    default_gw: 10.0.00.1
+    
  subnet-2:
     network_name: Branch-1321
     template_name: Branch-Template-Small
@@ -89,8 +92,8 @@ In this scenario we're also outlining the IP addressing and subnets through an a
     template_name: Branch-Template-Small
     name: VLAN_Corp
     vlan_id: 101
-    subnet: 100.20.20.8/29
-    default_gw: 100.20.20.9
+    subnet: 10.20.0.0/24
+    default_gw: 10.20.0.1
 ```
 
 ## Prerequsites
@@ -107,9 +110,6 @@ You will need a machine with Ansible installed, a basic working knowledge of Ans
 
 ### Breakdown of playbook
 
-Watch this short video here where I explain the process.
-
-And there we have it, showing how you as an IT team can standardise your configuration tooling and automate your branch environment by bringing up new sites in a fraction of a time with minimal human intervention.
 
 ```
 ---
@@ -192,7 +192,7 @@ And there we have it, showing how you as an IT team can standardise your configu
 
 ```
 
-And there we have it, showing how you as an IT team can standardise your configuration tooling and automate your branch environment by bringing up new sites in a fraction of a time with minimal human intervention.
+Walking through this playbook you can see we have
 
 ### Running playbook
 
@@ -251,3 +251,5 @@ jobs:
 
 
 ### Running
+
+

@@ -1,5 +1,16 @@
 #!/bin/bash
-cd playbooks/vars
-find "$PWD" -type f 
-cd ..
-ansible-playbook ./deploy-branch-readyaml.yaml --extra-vars "auth_key=$auth organisation=Demo"
+
+cd vars
+
+for dir in */; do
+    
+   cd "$dir"
+   variable=$(pwd)
+   echo $variable
+   mkdir $dir
+   cp -r $variable $dir
+   ls dir
+   cp ../../deploy-branch-readyaml.yaml $dir/deploy-branch-readyaml.yaml
+   ansible-playbook deploy-branch-readyaml.yaml
+   cd ../..
+done

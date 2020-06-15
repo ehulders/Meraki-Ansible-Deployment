@@ -15,12 +15,7 @@ jobs:
     steps:
     # Important: This sets up your GITHUB_WORKSPACE environment variable
     - uses: actions/checkout@v2
-       
-    - shell: bash
-      env:
-        auth: ${{ secrets.MERAKIAPI }}
-      run: echo "$auth"
-
+     
     - name: Lint Ansible Playbook
       # replace "master" with any valid ref
       uses: ansible/ansible-lint-action@master
@@ -31,5 +26,7 @@ jobs:
           ansible==2.8
           ansible-lint==4.2.0
         
-    - name: Get directories to run playbooks
-      run: sh ./scripts/entrypoint.sh
+    - shell: bash
+      env:
+        auth: ${{ secrets.MERAKIAPI }}
+      run: ./scripts/entrypoint.sh

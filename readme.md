@@ -104,7 +104,7 @@ You will need a machine with Ansible installed, a basic working knowledge of Ans
 * [Deploying ASAv in AWS with Ansible]()
 
 
-## Ansible
+## Ansible CLI
 
 ### Breakdown of playbook
 
@@ -202,7 +202,7 @@ ansible-playbook deploy-branch-readyaml.yaml
 
 The playbook will execute as per the animation below and create the required resources in the Meraki dashboard which you can now verify.
 
-### Automate deployment with Github Actions
+## Automate deployment with Github Actions
 
 A more preferred option may be to automate this deployment process with a CICD pipeline.
 

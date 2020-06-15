@@ -8,7 +8,7 @@ for dir in */; do
    variable=$(pwd)
    echo $variable
    mkdir deploy
-   cp -r $variable/addressing.yaml deploy/addressing.yaml
+   cp -r $variable/addressing.yaml deploy/addresses.yaml
    cp -r $variable/devices.yaml deploy/devices.yaml
    ls deploy
    cp ../../deploy-branch-readyaml.yaml deploy/deploy-branch-readyaml.yaml

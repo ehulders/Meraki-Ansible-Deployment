@@ -16,7 +16,7 @@ jobs:
       uses: ansible/ansible-lint-action@master
       with:
         playbooks/deploy-branch-readyaml.yaml
-        override-deps: |
+        override-deps:
           ansible==2.9
           ansible-lint==4.2.0
         # [optional]

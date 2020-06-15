@@ -1,6 +1,9 @@
 name: Ansible Lint  # feel free to pick your own name
 
-on: [push, pull_request]
+on:
+  push:
+    branches: 
+      - master
 
 jobs:
   build:
@@ -20,3 +23,5 @@ jobs:
         override-deps: |
           ansible==2.9
           ansible-lint==4.2.0
+          
+    

@@ -1,5 +1,5 @@
 #!/bin/zsh
-cd vars
+cd playbooks/vars
 find "$PWD" -type f 
 
 

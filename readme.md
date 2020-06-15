@@ -2,11 +2,11 @@
 
 When it comes to enterprise IT more and more organisations are looking to standardise their tooling for the configuration and management of these networks. An increasingly popular tool is the use of Ansible as part of a wider service chain to standardise what deployments look like across multiple different vendors and platforms.
 
-In this short guide I will be showing how we can use Ansible and Cisco Meraki to automate the deployment on branches the Meraki dashboards all the way from creation of networks, claiming of devices, binding of network templates and updating network specific details. This integration could also include a ITSM system such as ServiceNow or Jira which would have a handoff to Ansible to generate a data structure such as a CSV or YAML file which Ansible will use to create the network configuration in our examples
+In this short guide I will be showing how we can use Ansible and Cisco Meraki to automate the deployment of branches in the Meraki platform all the way from the creation of networks, claiming of devices, binding of network templates and updating network specific details. This integration could also include a ITSM system such as ServiceNow or Jira which would have a handoff to Ansible to generate a data structure such as a CSV or YAML file which Ansible will use to create the network configuration in our examples. However in this exampel we'll create the YAML files manually for simplicity, but keep in mind that an ITSM would likely kick the process off.
 
-This kind of usecase is suitable for any kind of environment where branch networks are likely to be simple but the numbers of actual physical locations could go into the thousands and the challenge sits in the deployment. It’s typically not feasible to have a dedicated network professional visit each location to carry out the install. With this kind of solution the deployment can be a mostly physical job where all thats required it to plug in the cables and test connectivity as much of the deployment will have been done before the infrastructure even arrives at its destination. With this workflow we’re able to automate the whole logical deployment with a single playbook that can be triggered through a CI pipeline or ITSM ticket/request. This is known in networking as NetDevOps
+This kind of usecase is suitable for any kind of environment where branch networks are likely to be simple in design but the numbers of actual physical locations could go into the thousands and the challenge sits in the deployment. It’s typically not feasible to have a dedicated network professional visit each location to carry out the install. With this kind of solution the deployment can be a mostly physical job where all thats required it to plug in the cables and test connectivity as much of the deployment will have been done before the infrastructure even arrives at its destination. With this workflow we’re able to automate the whole logical deployment with a single playbook that can be triggered through a CI pipeline or ITSM ticket/request. This is known in networking as NetDevOps.
 
-```Please note: This repo is intended for a demonstration and is not a 'production ready' CICD/NetDevOps pipeline tha can be deployed, they're arre parts of this project that are missing such as network testing and robustness improvements that should be made before this could go into production.```
+```Please note: This repo is intended for a demonstration and is not a 'production ready' CICD/NetDevOps pipeline tha can be deployed, they're are parts of this project that are missing such as network testing and robustness improvements that should be made before this would be suitable for production.```
 
 ## The NetDevOps workflow
 
@@ -26,7 +26,7 @@ Secondly the way Meraki supports templates for network configuration allows us t
 
 ## CICD - Continuous Integration, Continuous Delivery. But for networks
 
-As we've demonstrated in our network above this could form part of a CICD pipeline to automate the deployment of branches. This is known as NetDevOps. The devices and network elements can be defined through a YAML file like the example below, you could refer to this as infrastructure as code as our infrastructure is being defined by these YAML files. As new files are added to the source control for each branch we can automate CICD functionality (e.g. Gitlab CICD or Github actions) to automatically run the the playbook and deploy our branches.
+As we've demonstrated in our network above this could form part of a CICD pipeline to automate the deployment of branches. This is known as NetDevOps. The devices and network elements can be defined through a YAML file like the example below, you could refer to this as 'infrastructure as code' as our infrastructure is being defined by these YAML files. As new files are added to the source control for each branch we can automate CICD functionality (e.g. Gitlab CICD or Github actions) to automatically run the the playbook and deploy our branches.
 
 In this scenario we can define the devices to be added to our network and the template to be bound from our YAML file definition. Like the below example where we define 4 devices to be added to the network, the Ansible playbook will read these files (included in the repo) and use the variables to carry out the required tasks in the playbook. Should you wish to add more or less devices to your network you just need to edit the YAML file with the appropriate number of devices.
 
@@ -65,7 +65,9 @@ In this scenario we can define the devices to be added to our network and the te
     vlan_id: 1
 
 ```
+
 In this scenario we're also outlining the IP addressing and subnets through an accompanying YAML file. As can be seen below, these override the VLANs for the network which the original template defines. Please note, if you do not have the correct number of subjects and the names aren't correct for your corresponding template this is likely to fail. Make sure you have the same number of networks you're going to define in your YAML files and they have the same names too.
+
 ```
 ---
  subnet-1:

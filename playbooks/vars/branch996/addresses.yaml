@@ -4,8 +4,8 @@
     template_name: Demo-Template
     name: Management
     vlan_id: 1
-    subnet: 10.0.22.0/24
-    default_gw: 10.0.22.1
+    subnet: 10.0.20.0/24
+    default_gw: 10.0.20.1
 
  subnet-2:
     network_name: Branch996

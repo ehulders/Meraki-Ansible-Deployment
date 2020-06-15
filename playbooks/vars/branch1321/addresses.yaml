@@ -2,7 +2,7 @@
  subnet-1:
     network_name: Branch1321
     template_name: Demo-Template
-    name: 1_Management_Zone_policy
+    name: Management
     vlan_id: 1
     subnet: 10.0.10.0/24
     default_gw: 10.0.10.1

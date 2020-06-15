@@ -233,11 +233,11 @@ Congratulations, you've deployed your first Meraki network wih Ansible. Now in t
 
 ## Automate deployment with Github Actions
 
-A more preferred option may be to automate this deployment process with a CICD pipeline. In 2019, Ansible introduced their actions feature which allows for users to create their own CICD pipelines which allow for actions to be taken upon certain events from playbooks such as a push, pull, merge etc. In this section we'll go onto examine this feature and how it can be used to create a pipeline for deploying Meraki networks.
+A more preferred option may be to automate this deployment process with a CICD pipeline. In 2019, Ansible introduced their actions feature which allows for users to create their own CICD pipelines which allow for actions to be taken upon certain events from playbooks such as a push, pull, merge etc. In this section we'll go onto examine this feature and how it can be used to create a pipeline for deploying Meraki networks. You can learn more about Github actions from the [documentation](https://help.github.com/en/actions) which is fairly comprehensive. 
 
 ### Github Actions
 
-Building a pipeline couldn't be simplier, after clicking the actions tab you should see many options for building your own pipelines. Ignore these for now and select "set up a workflow yourself". Once selected this should give a blank text editor which you can paste the below in. Alternatively you can fork this repo and get the .github/workflows/main.yaml file in your repo already. The following sections will go onto examine this pipeline you've just created.
+Building a pipeline couldn't be simplier, after clicking the actions tab you should see many options for building your own pipelines which are 'prebuilt'. Ignore these for now and select "set up a workflow yourself". Once selected this should give a blank text editor which you can paste the below in. Alternatively you can fork this repo and get the .github/workflows/main.yaml file in your repo already. The following sections will go onto examine this pipeline you've just created.
 
 ```
 name: CICD  

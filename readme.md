@@ -112,11 +112,11 @@ One of the most straight forward ways to get started with Ansible and Meraki is 
 
 In this repository under the folder playbook you can see our example Playbook which we will use here. 
 
-The first two
+The first two tasks read the files 'addressing.yaml' and devices.yaml and store the contents in variables to be used in the later tasks. Have a look at both files in the /playbooks folder of this repository you'll see how they are laid out.
 
-The third task creates the network within the Meraki Dashboard to allow us to add our devices
+The third task creates the network within the Meraki Dashboard for us to use in the following steps.
 
-The fourth task then goes on to loop through the devices.yaml file and add all devices defined to our newly created network from task 3
+The fourth task then goes on to loop through the devices.yaml file and add all devices defined to our newly created network from the previous task. This uses the serial numbers for each device which is defined in the YAML file
 
 The firth task updaes the devices we added in the previous task with attribues such as names, IP addresses etc.
 
@@ -205,6 +205,8 @@ The seventh and final task then updates the IP addressing with the exact specifi
 
 ```
 
+This script could be customised to meet your exact deployment needs however the above can serve as an example.
+
 ### Running playbook
 
 All thats left to do is now lets run the playbook, to do this manually this can be done simply with the command executed on your local workstation.
@@ -213,7 +215,9 @@ All thats left to do is now lets run the playbook, to do this manually this can 
 ansible-playbook deploy-branch-readyaml.yaml
 ```
 
-The playbook will execute as per the animation below and create the required resources in the Meraki dashboard which you can now verify.
+The playbook will execute as per the animation below and create the required resources in the Meraki dashboard which you can now verify by going to the Meraki dashboard and examining the networks, devices, subnets etc.
+
+Congratulations, you've deployed your first Meraki network wih Ansible. Now in the next sections we're going to take that to the next level!
 
 ## Automate deployment with Github Actions
 

@@ -106,12 +106,18 @@ You will need a machine with Ansible installed, a basic working knowledge of Ans
 
 ## Ansible CLI
 
+One of the most straight forward ways to get started with Ansible and Meraki is by running playbooks directly from the CLI. Whilst not a fully automated process this will give some level of automating the majority of the work and demonstrating how Ansible can be used. In this guide we won't discuss the individual modules here [here](https://github.com/ansible/community/wiki/Network:-Meraki) and [here](https://docs.ansible.com/ansible/latest/scenario_guides/guide_meraki.html#ms-switches) with an honourable mention to [this repo here](https://github.com/shrunbr/ansible-provision-meraki) which has some excelent playbook examples if you're just getting started.
+
 ### Breakdown of playbook
+
+In this repository under the folder playbook you can see our example Playbook which we will use here. 
+
+In
 
 
 ```
 ---
-- name: meraki deployment
+- name: Meraki Deployment
   hosts: localhost
   vars:
     org_name: Meraki-Demo

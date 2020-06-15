@@ -1,11 +1,11 @@
-name: Ansible Lint  # feel free to pick your own name
+name: CICD  # feel free to pick your own name
 
 on:
   push:
     branches: 
       - master
     paths:
-    - 'playbooks/vars/**'
+      - 'playbooks/vars/**'
 
 jobs:
   lint:

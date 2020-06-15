@@ -15,12 +15,9 @@ jobs:
     steps:
     # Important: This sets up your GITHUB_WORKSPACE environment variable
     - uses: actions/checkout@v2
-      
-    - name: Decrypt large secret
-      run: echo $auth
-      env:
+       
+    - env:
         auth: ${{ secrets.MERAKIAPI }}
-
 
     - name: Lint Ansible Playbook
       # replace "master" with any valid ref

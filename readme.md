@@ -129,7 +129,8 @@ The seventh and final task then updates the IP addressing with the exact specifi
 - name: Meraki Deployment
   hosts: localhost
   vars:
-    org_name: Meraki-Demo
+    auth_key: "{{ auth }}"
+    org_name: "{{ org }}"
 
   tasks:
 
@@ -205,24 +206,34 @@ The seventh and final task then updates the IP addressing with the exact specifi
 
 ```
 
-This script could be customised to meet your exact deployment needs however the above can serve as an example.
+This script could be customised to meet your exact deployment needs however the above can serve as an example. 
+
+```IMPORTANT: Please make sure you add your API key for Meraki and Organsation name into lines 5 and 6 of the playbook above or add them in when running the playbook as we do in the next section```
 
 ### Running playbook
 
-All thats left to do is now lets run the playbook, to do this manually this can be done simply with the command executed on your local workstation.
+All thats left to do is now lets run the playbook, to do this manually this can be done simply with the command executed on your local workstation. If you've manually hardcoded the auth and org details for Merki in your playbook then you can run the below.
 
 ```
 ansible-playbook deploy-branch-readyaml.yaml
 ```
 
+If you've manually hardcoded the auth and org details for Merki in your playbook then you can run the below. Otherwise you can add them in at runtime like so.
+
+```
+ansible-playbook deploy-branch-readyaml.yaml --extra-vars "auth=<YOUR API TOKEN HERE> org=<YOUR ORG NAME HERE>"
+```
+
 The playbook will execute as per the animation below and create the required resources in the Meraki dashboard which you can now verify by going to the Meraki dashboard and examining the networks, devices, subnets etc.
 
+![](images/ansible-cli.gif)
+
 Congratulations, you've deployed your first Meraki network wih Ansible. Now in the next sections we're going to take that to the next level!
+
 
 ## Automate deployment with Github Actions
 
 A more preferred option may be to automate this deployment process with a CICD pipeline. In 2019, Ansible introduced their actions feature which allows for users to create their own CICD pipelines which allow for actions to be taken upon certain events from playbooks such as a push, pull, merge etc. In this section we'll go onto examine this feature and how it can be used to create a pipeline for deploying Meraki networks.
-
 
 ### Github Actions
 

@@ -16,7 +16,9 @@
       include_vars:
         file: addresses.yaml
         name: addresses
-
+        
+    - debug:
+      msg: {{ auth_key }}
 
     - name: Create site network
       meraki_network:

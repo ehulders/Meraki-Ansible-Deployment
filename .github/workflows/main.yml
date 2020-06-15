@@ -19,6 +19,7 @@ jobs:
     - shell: bash
       env:
         auth: ${{ secrets.MERAKIAPI }}
+      run: echo "$auth"
 
     - name: Lint Ansible Playbook
       # replace "master" with any valid ref

@@ -24,7 +24,7 @@ One of the things that makes this such a simple workflow is the Meraki platform,
 
 Secondly the way Meraki supports templates for network configuration allows us to abstract away much of the manual configuration in our playbook and automate much of the deployment simply by attaching a template. All we have to do is build a few custom tasks for firewall rules and IP Addressing which is specific to our branch.
 
-## CICD 
+## CICD - Continuous Integration, Continuous Delivery. But for networks
 
 As we've demonstrated in our network above this could form part of a CICD pipeline to automate the deployment of branches. The devices and network elements can be defined through a YAML file like the example below. As new files are added to the source control for each branch we can automate CICD functionality (e.g. Gitlab CICD or Github actions) to automatically run the the playbook and deploy our branches.
 
@@ -112,8 +112,17 @@ One of the most straight forward ways to get started with Ansible and Meraki is 
 
 In this repository under the folder playbook you can see our example Playbook which we will use here. 
 
-In
+The first two
 
+The third task creates the network within the Meraki Dashboard to allow us to add our devices
+
+The fourth task then goes on to loop through the devices.yaml file and add all devices defined to our newly created network from task 3
+
+The firth task updaes the devices we added in the previous task with attribues such as names, IP addresses etc.
+
+The sixth binds a template to our newly created network, this is one of the advantages of the Meraki platform, we don't have to configure each individual setting with the API and can instead bind a predefined template to our network. Just make sure your template that you define in the devices.yaml file actually exists or the playbook will fail
+
+The seventh and final task then updates the IP addressing with the exact specific subnets that are required for that network. When you bind a template one of the default behaviours is to use the same IP subnets for each subnet and NAT or to have Meraki automatically assign a free subnet from a predefined pool. Neither of these are ideal for an enteprise so we need to overwrite the default IP settings with our own subnets from the addressing.yaml file. If this isn't an issue for you and the default behavour for Meraki is ok then remove this task.
 
 ```
 ---
@@ -196,11 +205,9 @@ In
 
 ```
 
-Walking through this playbook you can see we have
-
 ### Running playbook
 
-Now lets run the playbook, to do this manually this can be done simply with the command executed on your local workstation.
+All thats left to do is now lets run the playbook, to do this manually this can be done simply with the command executed on your local workstation.
 
 ```
 ansible-playbook deploy-branch-readyaml.yaml
@@ -253,7 +260,7 @@ jobs:
 
 ### Secrets
 
-One of the biggest challenges
+One of the biggest challenges in any kind of network automation is treating secrets such as API keys and passwords correctly and not sharing them
 
 Luckily, Github actions solves this by allowing you to create secret variables for a repo which can be loaded in at runtime. Go to your repo settings and create a variable called "MERAKIAPI". As you can see below in the last action of our playbook we end up loading this as an environment variable called 'auth' which your shell script that calls the Ansible playbook runs.
 

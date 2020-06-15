@@ -1,0 +1,57 @@
+---
+ subnet-1:
+    network_name: PFS-B
+    template_name: PFS-Template-S
+    name: 1_Management_Zone_policy
+    vlan_id: 1
+    subnet: 100.20.80.0/24
+    default_gw: 100.20.80.1
+
+ subnet-2:
+    network_name: PFS-B
+    template_name: PFS-Template-S
+    name: 1C_Payment_Zone_policy
+    vlan_id: 100
+    subnet: 192.168.10.0/29
+    default_gw: 192.168.10.1
+
+ subnet-3:
+    network_name: PFS-B
+    template_name: PFS-Template-S
+    name: 2_Business_Zone_policy
+    vlan_id: 102
+    subnet: 100.20.20.8/29
+    default_gw: 100.20.20.9
+
+ subnet-4:
+    network_name: PFS-B
+    template_name: PFS-Template-S
+    name: 3_Corporate_Zone_policy
+    vlan_id: 103
+    subnet: 100.20.30.0/24
+    default_gw: 100.20.30.1
+
+ subnet-5:
+    network_name: PFS-B
+    template_name: PFS-Template-S
+    name: 4_Internet_Business_Zone_policy
+    vlan_id: 104
+    subnet: 100.20.40.0/24
+    default_gw: 100.20.40.1
+
+
+ subnet-6:
+    network_name: PFS-B
+    template_name: PFS-Template-S
+    name: 5_BP_Public_Zone_policy
+    vlan_id: 105
+    subnet: 100.20.50.0/24
+    default_gw: 100.20.50.1
+
+ subnet-7:
+    network_name: PFS-B
+    template_name: PFS-Template-S
+    name: 7_Partner_Zone_policy
+    vlan_id: 107
+    subnet: 100.20.70.0/24
+    default_gw: 100.20.70.1

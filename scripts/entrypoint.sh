@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd vars
+cd playbooks/vars
 
 for dir in */; do
     

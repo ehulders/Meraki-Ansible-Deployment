@@ -239,6 +239,10 @@ A more preferred option may be to automate this deployment process with a CICD p
 
 Building a pipeline couldn't be simplier, after clicking the actions tab you should see many options for building your own pipelines which are 'prebuilt'. Ignore these for now and select "set up a workflow yourself". Once selected this should give a blank text editor which you can paste the below in. Alternatively you can fork this repo and get the .github/workflows/main.yaml file in your repo already. The following sections will go onto examine this pipeline you've just created.
 
+Should you have forked this repo simply click on actions and confrim that you have understood the workflows, the pipeline will be set up for you and be kicked off anytime a file is changed in the vars folder. Before you do this though it's good practice to read the rest of this section to understand the Github actions functionality a little better.
+
+![](images/actions.png)
+
 ```
 name: CICD  
 

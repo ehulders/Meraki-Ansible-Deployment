@@ -309,16 +309,19 @@ on:
 For example in the below graphics you can see a new folder being commited to the repo. As soon as the address.yaml / device.yaml are commited to vars/branch-996 the actions are kicked off from within our repo and the process for deploying the networks is well underway within a few minutes.
 
 ![](images/step1.gif)
-*Commiting to the repo
+
+*Commiting to the repo*
 
 ![](images/step2.gif)
-*Pipeline has been started
+
+*Pipeline has been started*
 
 In a realistic example this may be deployed to a test branch first, which once tested would then be merged with the master to kick off the changes in production however this is just an illustration and not intended to be ready for production.
 
 Once the actions are complete you can then check the Meraki dashboard to see your networks have been created as was specified in the yaml definition files added to the repo. Should you add another folder into the the playbooks/vars directory which containers addresses.yaml and devices.yaml the pipeline will be kicked off again to deploy the new branch.
 
 ![](images/step3.gif)
-*Verifying pipeline
+
+*Verifying pipeline*
 
 Future improvements:

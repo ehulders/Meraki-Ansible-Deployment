@@ -70,7 +70,7 @@
       meraki_vlan:
         auth_key: "{{ auth_key }}"
         org_name: "{{ org_name }}"
-        net_id: "{{ off_network.results.0.data.id}}"
+        net_id: "{{ off_network.results.0.data.id }}"
         state: present
         name: "{{ item.value.name }}"
         vlan_id: "{{ item.value.vlan_id }}"

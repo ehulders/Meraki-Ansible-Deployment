@@ -39,7 +39,7 @@
         state: present
         serial: "{{ item.value.serial_no }}"
       register: off_add_dev1
-      loop: "{{ lookup('dict', devices) }}"
+      loop: "{{ lookup('dict', devices, wantlist=True) }}"
 
     - name: Update device Information
       meraki_device:
@@ -51,7 +51,7 @@
         name: " {{ item.value.device_name }}"
         move_map_marker: no
       register: off_update_dev1
-      loop: "{{ lookup('dict', devices) }}"
+      loop: "{{ lookup('dict', devices, wantlist=True) }}"
 
 
     - name: Bind a template from a network
@@ -62,7 +62,7 @@
         net_name: "{{ item.value.network_name }}"
         config_template: "{{ item.value.template_name }}"
       delegate_to: localhost
-      loop: "{{ lookup('dict', devices) }}"
+      loop: "{{ lookup('dict', devices, wantlist=True) }}"
       when: "'device-1' in item.key"
 
     - name: Add subnets

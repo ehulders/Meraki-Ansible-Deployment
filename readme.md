@@ -280,6 +280,10 @@ One of the biggest challenges in any kind of network automation is treating secr
 
 Luckily, Github actions solves this by allowing you to create secret variables for a repo which can be loaded in at runtime. Go to your repo settings and create a variable called "MERAKIAPI". As you can see below in the last action of our playbook we end up loading this as an environment variable called 'auth' which your shell script that calls the Ansible playbook runs.
 
+![](images/MERAKIAPI.gif)
+
+This secret is then passed into our pipeline at runtime with the below commands, it's stored as a shell environment variable and passed to Ansible which is called by the shell script 'entrypoint.sh'. You can examine this by going to the scripts folder and looking at the script for yourself
+
 ```
     - shell: bash
       env:

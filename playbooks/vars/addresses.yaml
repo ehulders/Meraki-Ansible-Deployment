@@ -4,8 +4,8 @@
     template_name: PFS-Template-S
     name: 1_Management_Zone_policy
     vlan_id: 1
-    subnet: 100.20.81.0/24
-    default_gw: 100.20.81.1
+    subnet: 100.20.80.0/24
+    default_gw: 100.20.80.1
 
  subnet-2:
     network_name: PFS-B

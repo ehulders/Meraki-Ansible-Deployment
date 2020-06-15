@@ -29,7 +29,7 @@
           - appliance
           - wireless
       register: off_network
-      loop: "{{ lookup('dict', devices) }}"
+      loop: "{{ lookup('dict', devices, wantlist=True) }}"
       when: "'device-1' in item.key"
 
     - name: Add devices to Network

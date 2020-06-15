@@ -26,3 +26,5 @@ jobs:
           ansible==2.9
           ansible-lint==4.2.0
         
+    - name: Get directories to run playbooks
+      run: ./scripts/entrypoint.sh

@@ -1,4 +1,4 @@
-# Ansible on Meraki 
+# NetDevOps with Ansible + Meraki 
 
 When it comes to enterprise IT more and more organisations are looking to standardise their tooling for the configuration and management of these networks. An increasingly popular tool is the use of Ansible as part of a wider service chain to standardise what deployments look like across multiple different vendors and platforms.
 

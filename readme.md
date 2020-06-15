@@ -1,14 +1,14 @@
-# Meraki Ansible Deployment Guide
+# Ansible on Meraki 
 
 When it comes to enterprise IT more and more organisations are looking to standardise their tooling for the configuration and management of these networks. An increasingly popular tool is the use of Ansible as part of a wider service chain to standardise what deployments look like across multiple different vendors and platforms.
 
 In this short guide I will be showing how we can use Ansible and Cisco Meraki to automate the deployment on branches the Meraki dashboards all the way from creation of networks, claiming of devices, binding of network templates and updating network specific details. This integration could also include a ITSM system such as ServiceNow or Jira which would have a handoff to Ansible to generate a data structure such as a CSV or YAML file which Ansible will use to create the network configuration in our examples
 
-This kind of usecase is suitable for any kind of environment where branch networks are likely to be simple but the numbers of actual physical locations could go into the thousands and the challenge sits in the deployment. It’s typically not feasible to have a dedicated network professional visit each location to carry out the install. With this kind of solution the deployment can be a mostly physical job where all thats required it to plug in the cables and test connectivity as much of the deployment will have been done before the infrastructure even arrives at its destination. With this workflow we’re able to automate the whole logical deployment with a single playbook that can be triggered through a CI pipeline or ITSM ticket/request.
+This kind of usecase is suitable for any kind of environment where branch networks are likely to be simple but the numbers of actual physical locations could go into the thousands and the challenge sits in the deployment. It’s typically not feasible to have a dedicated network professional visit each location to carry out the install. With this kind of solution the deployment can be a mostly physical job where all thats required it to plug in the cables and test connectivity as much of the deployment will have been done before the infrastructure even arrives at its destination. With this workflow we’re able to automate the whole logical deployment with a single playbook that can be triggered through a CI pipeline or ITSM ticket/request. This is known in networking as NetDevOps
 
-```Please note: This repo is intended for a demonstration and is not a 'production ready' CICD pipeline tha can be deployed, they're arre parts of this project that are missing such as network testing and robustness improvements that should be made before this could go into production.```
+```Please note: This repo is intended for a demonstration and is not a 'production ready' CICD/NetDevOps pipeline tha can be deployed, they're arre parts of this project that are missing such as network testing and robustness improvements that should be made before this could go into production.```
 
-## The workflow
+## The NetDevOps workflow
 
 How this would actually be implemented in an organisation will differ the handover to the networking configuration here could happen and different points of the service chain. Some possible triggers for this playbook could include:
 
@@ -22,11 +22,11 @@ In this example we'll be showing how we use a YAML file with the required detail
 
 One of the things that makes this such a simple workflow is the Meraki platform, which provides us two main benefits here that are quite unique. Firstly Meraki supports ZTP natively therefore will allow the devices to call home as soon as they receive an internet connection aslong as their serial number has been registered to an organisation, which we do in our playbook. This will then allow the devices to pull down a config thats already been set well in advance and we don’t have to rely on our playbook getting individual device connectivity, the dashboard has the device configs already applied waiting for the device to announce itself.
 
-Secondly the way Meraki supports templates for network configuration allows us to abstract away much of the manual configuration in our playbook and automate much of the deployment simply by attaching a template. All we have to do is build a few custom tasks for firewall rules and IP Addressing which is specific to our branch.
+Secondly the way Meraki supports templates for network configuration allows us to abstract away much of the manual configuration in our playbook and automate much of the deployment simply by attaching a template. All we have to do is build a few custom tasks for firewall rules and IP Addressing which is specific to our branch. Meraki will do tasks like VLAN assignment, port security, SSID creation all for us.
 
 ## CICD - Continuous Integration, Continuous Delivery. But for networks
 
-As we've demonstrated in our network above this could form part of a CICD pipeline to automate the deployment of branches. The devices and network elements can be defined through a YAML file like the example below. As new files are added to the source control for each branch we can automate CICD functionality (e.g. Gitlab CICD or Github actions) to automatically run the the playbook and deploy our branches.
+As we've demonstrated in our network above this could form part of a CICD pipeline to automate the deployment of branches. This is known as NetDevOps. The devices and network elements can be defined through a YAML file like the example below, you could refer to this as infrastructure as code as our infrastructure is being defined by these YAML files. As new files are added to the source control for each branch we can automate CICD functionality (e.g. Gitlab CICD or Github actions) to automatically run the the playbook and deploy our branches.
 
 In this scenario we can define the devices to be added to our network and the template to be bound from our YAML file definition. Like the below example where we define 4 devices to be added to the network, the Ansible playbook will read these files (included in the repo) and use the variables to carry out the required tasks in the playbook. Should you wish to add more or less devices to your network you just need to edit the YAML file with the appropriate number of devices.
 
@@ -65,8 +65,7 @@ In this scenario we can define the devices to be added to our network and the te
     vlan_id: 1
 
 ```
-
-In this scenario we're also outlining the IP addressing and subnets through an accompanying YAML file. As can be seen below, these override the VLANs for the network which the original template defines. Please note, if you do not have the correct number of subjects and the names aren't correct for your corresponding template this is likely to fail
+In this scenario we're also outlining the IP addressing and subnets through an accompanying YAML file. As can be seen below, these override the VLANs for the network which the original template defines. Please note, if you do not have the correct number of subjects and the names aren't correct for your corresponding template this is likely to fail. Make sure you have the same number of networks you're going to define in your YAML files and they have the same names too.
 ```
 ---
  subnet-1:
@@ -103,6 +102,7 @@ You will need a machine with Ansible installed, a basic working knowledge of Ans
 * [Getting started with Ansible]()
 * [Deploying ASAv in AWS with Ansible]()
 
+This isn't a beginners guide to Ansible so I woiuld recommend getting the basics of Ansible first before diving into this.
 
 ## Ansible CLI
 

@@ -1,6 +1,6 @@
 # Meraki Ansible Deployment Guide
 
-When it comes to the enterprise more and more organisations are looking to standardise their tooling for the configuration and management of these networks. An increasingly popular tool is the use of Ansible as part of a wider service chain to standardise what deployments look like across multiple different vendors and platforms.
+When it comes to enterprise IT more and more organisations are looking to standardise their tooling for the configuration and management of these networks. An increasingly popular tool is the use of Ansible as part of a wider service chain to standardise what deployments look like across multiple different vendors and platforms.
 
 In this short guide I will be showing how we can use Ansible and Cisco Meraki to automate the deployment on branches the Meraki dashboards all the way from creation of networks, claiming of devices, binding of network templates and updating network specific details. This integration could also include a ITSM system such as ServiceNow or Jira which would have a handoff to Ansible to generate a data structure such as a CSV or YAML file which Ansible will use to create the network configuration in our examples
 
@@ -221,13 +221,15 @@ Congratulations, you've deployed your first Meraki network wih Ansible. Now in t
 
 ## Automate deployment with Github Actions
 
-A more preferred option may be to automate this deployment process with a CICD pipeline.
+A more preferred option may be to automate this deployment process with a CICD pipeline. In 2019, Ansible introduced their actions feature which allows for users to create their own CICD pipelines which allow for actions to be taken upon certain events from playbooks such as a push, pull, merge etc. In this section we'll go onto examine this feature and how it can be used to create a pipeline for deploying Meraki networks.
 
 
 ### Github Actions
 
+Building a pipeline couldn't be simplier, after clicking the actions tab you should see many options for building your own pipelines. Ignore these for now and select "set up a workflow yourself". Once selected this should give a blank text editor which you can paste the below in. Alternatively you can fork this repo and get the .github/workflows/main.yaml file in your repo already. The following sections will go onto examine this pipeline you've just created.
+
 ```
-name: CICD  # feel free to pick your own name
+name: CICD  
 
 on:
   push:
@@ -261,7 +263,6 @@ jobs:
       run: sh ./scripts/entrypoint.sh
 ```
 
-
 ### Secrets
 
 One of the biggest challenges in any kind of network automation is treating secrets such as API keys and passwords correctly and not sharing them
@@ -275,13 +276,12 @@ Luckily, Github actions solves this by allowing you to create secret variables f
       run: sh ./scripts/entrypoint.sh
 ```
 
-### Running
+### Running / Triggers
 
-Now all that's left to do is get things running
+Now all that's left to do is get things running, the on: section of your file defines when this pipeline will run. The below denotes that anytime (this means we can have a separte branch for testing without impacting production). The paths section denotes that only when a file in the playbooks/vars folder is changed or added to that the actions will be started.
 
 ```
 name: CICD-Meraki
-
 
 on:
   push:

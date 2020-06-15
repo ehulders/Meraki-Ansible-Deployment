@@ -6,9 +6,7 @@ In this short guide I will be showing how we can use Ansible and Cisco Meraki to
 
 This kind of usecase is suitable for any kind of environment where branch networks are likely to be simple but the numbers of actual physical locations could go into the thousands and the challenge sits in the deployment. It’s typically not feasible to have a dedicated network professional visit each location to carry out the install. With this kind of solution the deployment can be a mostly physical job where all thats required it to plug in the cables and test connectivity as much of the deployment will have been done before the infrastructure even arrives at its destination. With this workflow we’re able to automate the whole logical deployment with a single playbook that can be triggered through a CI pipeline or ITSM ticket/request.
 
-```
-Please note: This repo is intended for a demonstration and is not a 'production ready' CICD pipeline tha can be deployed, they're arre parts of this project that are missing such as network testing and robustness improvements that should be made before this could go into production.
-```
+```Please note: This repo is intended for a demonstration and is not a 'production ready' CICD pipeline tha can be deployed, they're arre parts of this project that are missing such as network testing and robustness improvements that should be made before this could go into production.```
 
 ## The workflow
 
@@ -248,6 +246,10 @@ jobs:
 
 
 ### Secrets
+
+One of the biggest challenges
+
+Luckily, Github actions solves this
 
 
 ### Running

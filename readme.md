@@ -322,6 +322,6 @@ Once the actions are complete you can then check the Meraki dashboard to see you
 
 ![](images/step3.gif)
 
-*Verifying pipeline*
+*Verifying pipeline has complete sucessfully in the Meraki dashboard*
 
-Future improvements:
+Congratulations, you should show have a NetDevOps pipeline set up for your Meraki branches. This is not intended to be a full production but a demonstrator as to how you could use Ansible with a Meraki network. If you have any feedback or issues with this guide, please get in contact with me at sttrayno@cisco.com or raise an issue in this repo.

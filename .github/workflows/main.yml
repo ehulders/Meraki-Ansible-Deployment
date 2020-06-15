@@ -18,9 +18,7 @@ jobs:
        
     - shell: bash
       env:
-        SUPER_SECRET: ${{ secrets.MERAKIAPI }}
-      run: |
-        echo "$SUPER_SECRET"
+        auth: ${{ secrets.MERAKIAPI }}
 
     - name: Lint Ansible Playbook
       # replace "master" with any valid ref

@@ -207,3 +207,47 @@ The playbook will execute as per the animation below and create the required res
 ### Automate deployment with Github Actions
 
 A more preferred option may be to automate this deployment process with a CICD pipeline.
+
+
+### Github Actions
+
+```
+name: CICD  # feel free to pick your own name
+
+on:
+  push:
+    branches: 
+      - master
+    paths:
+      - 'playbooks/vars/**'
+
+jobs:
+  lint:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    # Important: This sets up your GITHUB_WORKSPACE environment variable
+    - uses: actions/checkout@v2
+     
+    - name: Lint Ansible Playbook
+      # replace "master" with any valid ref
+      uses: ansible/ansible-lint-action@master
+      with:
+        targets: |
+           playbooks/deploy-branch-readyaml.yaml
+        override-deps: |
+          ansible==2.8
+          ansible-lint==4.2.0
+        
+    - shell: bash
+      env:
+        auth: ${{ secrets.MERAKIAPI }}
+      run: sh ./scripts/entrypoint.sh
+```
+
+
+### Secrets
+
+
+### Running

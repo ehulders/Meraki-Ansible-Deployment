@@ -16,8 +16,11 @@ jobs:
     # Important: This sets up your GITHUB_WORKSPACE environment variable
     - uses: actions/checkout@v2
        
-    - env:
-        auth: ${{ secrets.MERAKIAPI }}
+    - shell: bash
+      env:
+        SUPER_SECRET: ${{ secrets.MERAKIAPI }}
+      run: |
+        echo "$SUPER_SECRET
 
     - name: Lint Ansible Playbook
       # replace "master" with any valid ref

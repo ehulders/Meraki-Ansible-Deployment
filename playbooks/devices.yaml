@@ -4,7 +4,7 @@
     template_name: Demo-Template
     device_name: 1321_mx1
     device_type: MX68
-    serial_no: Q2KY-FNZB-5LS2
+    serial_no: XXXX-XXXX-XXXX
     vlan_id: 1
     ip_address: 100.0.0.1
     subnet_mask: 255.255.255.0

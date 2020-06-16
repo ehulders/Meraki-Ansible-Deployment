@@ -3,25 +3,12 @@
     network_name: Branch-996
     template_name: Demo-Template
     device_name: 996_mx1
-    device_type: MX67
-    serial_no: Q2BN-TXYH-KJLU
+    device_type: MX64
+    serial_no: XXXX-XXXX-XXXX
     vlan_id: 1
-    ip_address: 10.0.20.1
+    ip_address: 10.0.10.1
     subnet_mask: 255.255.255.0
     gateway_ip: n/a
     dns_server1: 208.67.222.222
     dns_server2: 208.67.220.220
 
- device-2:
-    network_name: Branch-996
-    template_name: Demo-Template
-    device_name: 996_ms1
-    device_type: MS22
-    serial_no: Q2AP-TTUA-ZYKG
-    mac-address: 34:56:fe:cc:89:38
-    vlan_id: 1
-    ip_address: 10.0.20.11
-    subnet_mask: 255.255.255.0
-    gateway_ip: 100.0.20.1
-    dns_server1: 208.67.222.222
-    dns_server2: 208.67.220.220

@@ -3,7 +3,7 @@
     network_name: Branch1321
     template_name: Demo-Template
     device_name: 1321_mx1
-    device_type: MX68
+    device_type: MX64
     serial_no: XXXX-XXXX-XXXX
     vlan_id: 1
     ip_address: 10.0.0.1

@@ -1,4 +1,4 @@
-# NetDevOps with Ansible + Meraki 
+# NetDevOps with Ansible + Meraki + Github Actions 
 
 When it comes to enterprise IT more and more organisations are looking to standardise their tooling for the configuration and management of these networks. An increasingly popular tool is the use of Ansible as part of a wider service chain to standardise what deployments look like across multiple different vendors and platforms.
 
@@ -106,15 +106,24 @@ You will need a machine with Ansible installed, a basic working knowledge of Ans
 
 This isn't a beginners guide to Ansible so I woiuld recommend getting the basics of Ansible first before diving into this.
 
+***If you are going to follow this guide you should create a fork of this repo as you'll need to work with the playbooks and vars files included in this repo, if you're going to be working with your own devices and serial numbers you should consider making this private to make it private
+
 ## Ansible CLI
 
+But first we're not going to jump into the deep end by building a full NetDevOps pipeline right away, lets build our knowledge up with Ansible and Meraki to dip our toe in the water first.
+
 One of the most straight forward ways to get started with Ansible and Meraki is by running playbooks directly from the CLI. Whilst not a fully automated process this will give some level of automating the majority of the work and demonstrating how Ansible can be used. In this guide we won't discuss the individual modules here [here](https://github.com/ansible/community/wiki/Network:-Meraki) and [here](https://docs.ansible.com/ansible/latest/scenario_guides/guide_meraki.html#ms-switches) with an honourable mention to [this repo here](https://github.com/shrunbr/ansible-provision-meraki) which has some excelent playbook examples if you're just getting started.
+
+In this first exercise we'll run the playbook with Ansible driven from the CLI first.
 
 ### Breakdown of playbook
 
 In this repository under the folder playbook you can see our example Playbook which we will use here. 
 
 The first two tasks read the files 'addressing.yaml' and devices.yaml and store the contents in variables to be used in the later tasks. Have a look at both files in the /playbooks folder of this repository you'll see how they are laid out.
+
+```IMPORTANT: Within the devices.yaml file please ensure that your serial number matches your devices you're going to deploy, in the master repo they are marked as XXXX-XXXX-XXXX
+````
 
 The third task creates the network within the Meraki Dashboard for us to use in the following steps.
 
@@ -230,8 +239,7 @@ The playbook will execute as per the animation below and create the required res
 
 ![](images/ansible-cli.gif)
 
-Congratulations, you've deployed your first Meraki network wih Ansible. Now in the next sections we're going to take that to the next level!
-
+Congratulations, you've deployed your first Meraki network wih Ansible. Now in the next sections we're going to take that to the next level and start to automate even the running of our playbook.
 
 ## Automate deployment with Github Actions
 

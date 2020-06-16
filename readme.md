@@ -106,7 +106,7 @@ You will need a machine with Ansible installed, a basic working knowledge of Ans
 
 This isn't a beginners guide to Ansible so I woiuld recommend getting the basics of Ansible first before diving into this.
 
-***If you are going to follow this guide you should create a fork of this repo as you'll need to work with the playbooks and vars files included in this repo, if you're going to be working with your own devices and serial numbers you should consider making this private to make it private
+***If you are going to follow this guide you should create a fork of this repo as you'll need to work with the playbooks and vars files included in this repo, if you're going to be working with your own devices and serial numbers you should consider making this private to make it private***
 
 ## Ansible CLI
 
@@ -114,7 +114,7 @@ But first we're not going to jump into the deep end by building a full NetDevOps
 
 One of the most straight forward ways to get started with Ansible and Meraki is by running playbooks directly from the CLI. Whilst not a fully automated process this will give some level of automating the majority of the work and demonstrating how Ansible can be used. In this guide we won't discuss the individual modules here [here](https://github.com/ansible/community/wiki/Network:-Meraki) and [here](https://docs.ansible.com/ansible/latest/scenario_guides/guide_meraki.html#ms-switches) with an honourable mention to [this repo here](https://github.com/shrunbr/ansible-provision-meraki) which has some excelent playbook examples if you're just getting started.
 
-In this first exercise we'll run the playbook with Ansible driven from the CLI first.
+In this first exercise we'll run the playbook with Ansible driven from the CLI first to get familiar with the Meraki modules and the Ansible workflow
 
 ### Breakdown of playbook
 
@@ -223,13 +223,13 @@ This script could be customised to meet your exact deployment needs however the 
 
 ### Running playbook
 
-All thats left to do is now lets run the playbook, to do this manually this can be done simply with the command executed on your local workstation. If you've manually hardcoded the auth and org details for Merki in your playbook then you can run the below.
+All thats left to do is now lets run the playbook, to do this manually this can be done simply with the command executed on your local workstation. If you've manually hardcoded the auth and org details for Merki in your playbook then you can run the below. While this playbook runs explore your Meraki dashboard to see the resources being created within Meraki.
 
 ```
 ansible-playbook deploy-branch-readyaml.yaml
 ```
 
-If you've manually hardcoded the auth and org details for Merki in your playbook then you can run the below. Otherwise you can add them in at runtime like so.
+If you've edited the playbook to manually hardcode the auth and org details for Merki in your playbook then you can run the below. Otherwise you can add them in at runtime like so.
 
 ```
 ansible-playbook deploy-branch-readyaml.yaml --extra-vars "auth=<YOUR API TOKEN HERE> org=<YOUR ORG NAME HERE>"

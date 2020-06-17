@@ -30,7 +30,7 @@ As we've demonstrated in our network above this could form part of a CICD pipeli
 
 In this scenario we can define the devices to be added to our network and the template to be bound from our YAML file definition. Like the below example where we define 4 devices to be added to the network, the Ansible playbook will read these files (included in the repo) and use the variables to carry out the required tasks in the playbook. Should you wish to add more or less devices to your network you just need to edit the YAML file with the appropriate number of devices.
 
-```
+```yaml
 ---
  device-1:
     network_name: Branch-1321
@@ -68,7 +68,7 @@ In this scenario we can define the devices to be added to our network and the te
 
 In this scenario we're also outlining the IP addressing and subnets through an accompanying YAML file. As can be seen below, these override the VLANs for the network which the original template defines. Please note, if you do not have the correct number of subjects and the names aren't correct for your corresponding template this is likely to fail. Make sure you have the same number of networks you're going to define in your YAML files and they have the same names too.
 
-```
+```yaml
 ---
  subnet-1:
     network_name: Branch-1321
@@ -135,7 +135,7 @@ The sixth binds a template to our newly created network, this is one of the adva
 
 The seventh and final task then updates the IP addressing with the exact specific subnets that are required for that network. When you bind a template one of the default behaviours is to use the same IP subnets for each subnet and NAT or to have Meraki automatically assign a free subnet from a predefined pool. Neither of these are ideal for an enteprise so we need to overwrite the default IP settings with our own subnets from the addressing.yaml file. If this isn't an issue for you and the default behavour for Meraki is ok then remove this task.
 
-```
+```yaml
 ---
 - name: Meraki Deployment
   hosts: localhost
@@ -253,7 +253,7 @@ Should you have forked this repo simply click on actions and confrim that you ha
 
 ![](images/actions.png)
 
-```
+```yaml
 name: CICD  
 
 on:
@@ -298,7 +298,7 @@ Luckily, Github actions solves this by allowing you to create secret variables f
 
 This secret is then passed into our pipeline at runtime with the below commands, it's stored as a shell environment variable and passed to Ansible which is called by the shell script 'entrypoint.sh'. You can examine this by going to the scripts folder and looking at the script for yourself
 
-```
+```yaml
     - shell: bash
       env:
         auth: ${{ secrets.MERAKIAPI }}

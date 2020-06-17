@@ -309,7 +309,7 @@ This secret is then passed into our pipeline at runtime with the below commands,
 
 Now all that's left to do is get things running, the on: section of your file defines when this pipeline will run. The below denotes that anytime (this means we can have a separte branch for testing without impacting production). The paths section denotes that only when a file in the playbooks/vars folder is changed or added to that the actions will be started.
 
-```
+```yaml
 name: CICD-Meraki
 
 on:

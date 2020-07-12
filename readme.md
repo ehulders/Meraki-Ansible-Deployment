@@ -101,8 +101,8 @@ To fully replicate this guide you will need a Meraki network which isn't somethi
 
 You will need a machine with Ansible installed, a basic working knowledge of Ansible is preferred for this guide. Please see the following repositories which also cover Ansible:
 
-* [Getting started with Ansible]()
-* [Deploying ASAv in AWS with Ansible]()
+* [Getting started with Ansible](https://github.com/sttrayno/Ansible-Lab-Guide)
+* [Deploying ASAv in AWS with Ansible](https://github.com/sttrayno/ASAonAWS-Ansible-Deployment)
 
 This isn't a beginners guide to Ansible so I woiuld recommend getting the basics of Ansible first before diving into this.
 
@@ -120,9 +120,10 @@ In this first exercise we'll run the playbook with Ansible driven from the CLI f
 
 In this repository under the folder playbook you can see our example Playbook which we will use here. 
 
-The first two tasks read the files 'addressing.yaml' and devices.yaml and store the contents in variables to be used in the later tasks. Have a look at both files in the /playbooks folder of this repository you'll see how they are laid out.
+The first two tasks read the files '(addressing.yaml)[playbooks/addressing.yaml]' and (devices.yaml)[playbooks/devices.yaml] and store the contents in variables to be used in the later tasks. Have a look at both files in the /playbooks folder of this repository you'll see how they are laid out.
 
-```IMPORTANT: Within the devices.yaml file please ensure that your serial number matches your devices you're going to deploy, in the master repo they are marked as XXXX-XXXX-XXXX
+```
+IMPORTANT: Within the devices.yaml file please ensure that your serial number matches your devices you're going to deploy, in the master repo they are marked as XXXX-XXXX-XXXX
 ````
 
 The third task creates the network within the Meraki Dashboard for us to use in the following steps.

@@ -120,7 +120,7 @@ In this first exercise we'll run the playbook with Ansible driven from the CLI f
 
 In this repository under the folder playbook you can see our example Playbook which we will use here. 
 
-The first two tasks read the files '[addresses.yaml](https://github.com/sttrayno/Meraki-devices-Deployment/blob/master/playbooks/addresses.yaml)' and '[devices.yaml](https://github.com/sttrayno/Meraki-Ansible-Deployment/blob/master/playbooks/devices.yaml)' and stores the contents in variables to be used in the later tasks. Have a look at both files in the /playbooks folder of this repository you'll see how they are laid out.
+The first two tasks read the files '[addresses.yaml](https://github.com/sttrayno/Meraki-Ansible-Deployment/blob/master/playbooks/addresses.yaml)' and '[devices.yaml](https://github.com/sttrayno/Meraki-Ansible-Deployment/blob/master/playbooks/devices.yaml)' and stores the contents in variables to be used in the later tasks. Have a look at both files in the /playbooks folder of this repository you'll see how they are laid out.
 
 ```
 IMPORTANT: Within the devices.yaml file please ensure that your serial number matches your devices you're going to deploy, in the master repo they are marked as XXXX-XXXX-XXXX

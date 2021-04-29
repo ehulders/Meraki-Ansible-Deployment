@@ -17,6 +17,7 @@
         file: addresses.yaml
         name: addresses
 
+
     - name: Create site network
       meraki_network:
         auth_key: "{{ auth_key }}"
@@ -31,6 +32,7 @@
       loop: "{{ lookup('dict', devices, wantlist=True) }}"
       when: "'device-1' in item.key"
 
+
     - name: Add devices to Network
       meraki_device:
         auth_key: "{{ auth_key }}"
@@ -40,6 +42,7 @@
         serial: "{{ item.value.serial_no }}"
       register: off_add_dev1
       loop: "{{ lookup('dict', devices, wantlist=True) }}"
+
 
     - name: Update device Information
       meraki_device:
@@ -54,16 +57,28 @@
       loop: "{{ lookup('dict', devices, wantlist=True) }}"
 
 
-    - name: Bind a template from a network
-      meraki_config_template:
-        auth_key: "{{ auth_key }}"
-        state: present
-        org_name: "{{ org_name }}"
-        net_name: "{{ item.value.network_name }}"
-        config_template: "{{ item.value.template_name }}"
-      delegate_to: localhost
-      loop: "{{ lookup('dict', devices, wantlist=True) }}"
-      when: "'device-1' in item.key"
+    # - name: Bind a template from a network
+    #   meraki_config_template:
+    #     auth_key: "{{ auth_key }}"
+    #     state: present
+    #     org_name: "{{ org_name }}"
+    #     net_name: "{{ item.value.network_name }}"
+    #     config_template: "{{ item.value.template_name }}"
+    #   delegate_to: localhost
+    #   loop: "{{ lookup('dict', devices, wantlist=True) }}"
+    #   when: "'device-1' in item.key"
+
+
+    - name: Enable Vlan support for MX
+      uri:
+        url: https://api.meraki.com/api/v1/networks/{{off_network.results.0.data.id}}/appliance/vlans/settings
+        method: PUT
+        headers:
+          X-Cisco-Meraki-API-Key: "{{ auth_key }}"
+        body: "{ \"vlansEnabled\": \"true\" }"
+        body_format: json 
+      register: meraki_network
+
 
     - name: Add subnets
       meraki_vlan:
@@ -75,4 +90,4 @@
         vlan_id: "{{ item.value.vlan_id }}"
         subnet: "{{ item.value.subnet }}"
         appliance_ip: "{{ item.value.default_gw }}"
-      loop: "{{ lookup('dict', addresses) }}"
+      loop: "{{ lookup('dict', addresses, wantlist=True) }}"

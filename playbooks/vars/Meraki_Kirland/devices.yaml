@@ -1,0 +1,13 @@
+---
+ device-1:
+    network_name: Meraki Kirkland
+    template_name: Bothell_Backup
+    device_name: Marys's MX60
+    device_type: MX60
+    serial_no: Q2BN-2VE3-2EKB
+    vlan_id: 1
+    ip_address: 192.168.1.2
+    subnet_mask: 255.255.255.0
+    gateway_ip: n/a
+    dns_server1: 208.67.222.222
+    dns_server2: 208.67.220.220

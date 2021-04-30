@@ -7,15 +7,15 @@
 
   tasks:
 
-    - name: include variables for devices
-      include_vars:
-        file: devices.yaml
-        name: devices
+    # - name: include variables for devices
+    #   include_vars:
+    #     file: devices.yaml
+    #     name: devices
 
-    - name: include variables for addresses
-      include_vars:
-        file: addresses.yaml
-        name: addresses
+    # - name: include variables for addresses
+    #   include_vars:
+    #     file: addresses.yaml
+    #     name: addresses
 
 
     - name: Create site network

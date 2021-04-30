@@ -21,7 +21,7 @@
     name: User
     vlan_id: 20
     subnet: 10.10.20.0/24
-    default_gw: 10.20.10.1
+    default_gw: 10.10.20.1
 
  subnet-4:
     network_name: Meraki Kirkland
@@ -29,4 +29,4 @@
     name: IOT
     vlan_id: 30
     subnet: 10.10.30.0/24
-    default_gw: 10.30.10.1
+    default_gw: 10.10.30.1

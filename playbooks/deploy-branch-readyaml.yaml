@@ -71,12 +71,12 @@
 
     - name: Enable Vlan support for MX
       uri:
-        url: https://api.meraki.com/api/v1/networks/{{off_network.results.0.data.id}}/appliance/vlans/settings
+        url: https://api.meraki.com/api/v1/networks/{{ off_network.results.0.data.id }}/appliance/vlans/settings
         method: PUT
         headers:
           X-Cisco-Meraki-API-Key: "{{ auth_key }}"
         body: "{ \"vlansEnabled\": \"true\" }"
-        body_format: json 
+        body_format: json
       register: meraki_network
 
 

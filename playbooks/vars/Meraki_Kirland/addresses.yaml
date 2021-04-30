@@ -5,7 +5,7 @@
     name: Management
     vlan_id: 1
     subnet: 192.168.1.0/24
-    default_gw: 192.168.1.1
+    default_gw: 192.168.1.2
 
  subnet-2:
     network_name: Meraki Kirkland

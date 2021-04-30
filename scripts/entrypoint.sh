@@ -10,7 +10,7 @@ for dir in */; do
    cp -r $path/devices.yaml deploy/devices.yaml
    ls deploy
    cp ../../deploy-branch-readyaml.yaml deploy/deploy-branch-readyaml.yaml
-   ansible-playbook ./deploy/deploy-branch-readyaml.yaml --extra-vars "auth=$auth org=Demo"
+   ansible-playbook ./deploy/deploy-branch-readyaml.yaml --extra-vars "auth=$auth org=Cisco Systems, Inc."
    cd ..
 done
  

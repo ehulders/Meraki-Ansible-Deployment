@@ -1,0 +1,26 @@
+---
+- name: udpate meraki ms switchports
+  hosts: localhost
+  vars:
+    auth_key: "{{ auth }}"
+    org_name: "{{ org }}"
+
+  tasks:
+    - name: include variables for devices
+      include_vars:
+        file: devices.yaml
+        name: devices
+
+    - name: include variables for addresses
+      include_vars:
+        file: addresses.yaml
+        name: addresses
+
+    - name: Update Switch Name
+      meraki_switch_stack:
+        auth_key: "{{ auth_key }}"
+        state: present
+        org_name: "{{ org_name }}"
+        net_name: YourNet
+        name: "{{ device_name }}"
+        serials: "{{ serial_no }}"

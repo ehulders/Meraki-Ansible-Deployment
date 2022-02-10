@@ -27,6 +27,6 @@
     network_name: Meraki Kirkland
     template_name: Deploy_Meraki_Kirkland
     name: IOT
-    vlan_id: 30
-    subnet: 10.30.10.0/24
-    default_gw: 10.30.10.1
+    vlan_id: 40
+    subnet: 10.40.10.0/24
+    default_gw: 10.40.10.1

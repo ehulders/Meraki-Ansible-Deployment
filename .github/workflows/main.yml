@@ -21,7 +21,7 @@ jobs:
       uses: ansible/ansible-lint-action@master
       with:
         targets: |
-           playbooks/update-switch.yaml
+           playbooks/deploy-branch-readyaml.yaml
         # override-deps: |
         #   ansible==2.10
         #   ansible-lint==4.2.0

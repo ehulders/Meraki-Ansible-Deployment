@@ -13,6 +13,6 @@ for dir in */; do
    #cp ../../deploy-branch-readyaml.yaml deploy/deploy-branch-readyaml.yaml
    #ansible-playbook ./deploy/deploy-branch-readyaml.yaml --extra-vars "auth=$auth org='Cisco Systems, Inc.'"
    cp ../../update-switch.yaml deploy/update-switch.yaml
-   #ansible-playbook ./deploy/update-switch.yaml --extra-vars "auth=$auth org='Cisco Systems, Inc.'"
+   ansible-playbook ./deploy/update-switch.yaml --extra-vars "auth=$auth org='Cisco Systems, Inc.'"
    cd ..
 done

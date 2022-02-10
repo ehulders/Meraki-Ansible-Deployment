@@ -2,7 +2,7 @@
  switch-1:
     network_name: Meraki Bothell
     template_name: Bothell_Backup
-    device_name: Great_Room_Test
+    device_name: Movie_Room_Switch
     device_type: MS220-8P
     serial_no: Q2HP-2QN6-LJX8
-    tags: switch-1
+    tags: cicd

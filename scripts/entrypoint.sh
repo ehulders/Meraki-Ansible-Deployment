@@ -8,7 +8,7 @@ for dir in */; do
    mkdir deploy
    #cp -r $path/addresses.yaml deploy/addresses.yaml
    #cp -r $path/devices.yaml deploy/devices.yaml
-   #cp -r $path/switches.yaml deploy/switches.yaml
+   cp -r $path/switches.yaml deploy/switches.yaml
    ls deploy
    #cp ../../deploy-branch-readyaml.yaml deploy/deploy-branch-readyaml.yaml
    #ansible-playbook ./deploy/deploy-branch-readyaml.yaml --extra-vars "auth=$auth org='Cisco Systems, Inc.'"

@@ -6,10 +6,15 @@
     org_name: "{{ org }}"
 
   tasks:
-    - name: include variables for switches
+    - name: include variables for devices
       include_vars:
-        file: switches.yaml
-        name: switches
+        file: devices.yaml
+        name: devices
+
+    - name: include variables for addresses
+      include_vars:
+        file: addresses.yaml
+        name: addresses
 
     - name: Update information about a device.
       meraki_device:

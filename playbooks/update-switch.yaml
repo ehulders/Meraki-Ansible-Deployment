@@ -6,7 +6,7 @@
     org_name: "{{ org }}"
 
   tasks:
-    - name: include variables for devices
+    - name: include variables for switches
       include_vars:
         file: switches.yaml
         name: switches

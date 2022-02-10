@@ -1,0 +1,32 @@
+---
+ subnet-1:
+    network_name: Meraki Kirkland
+    template_name: Deploy_Meraki_Kirkland
+    name: Management
+    vlan_id: 1
+    subnet: 192.168.1.0/24
+    default_gw: 192.168.1.1
+
+ subnet-2:
+    network_name: Meraki Kirkland
+    template_name: Deploy_Meraki_Kirkland
+    name: VPN
+    vlan_id: 10
+    subnet: 10.10.10.0/24
+    default_gw: 10.10.10.1
+
+ subnet-3:
+    network_name: Meraki Kirkland
+    template_name: Deploy_Meraki_Kirkland
+    name: User
+    vlan_id: 20
+    subnet: 10.20.10.0/24
+    default_gw: 10.20.10.1
+
+ subnet-4:
+    network_name: Meraki Kirkland
+    template_name: Deploy_Meraki_Kirkland
+    name: IOT
+    vlan_id: 40
+    subnet: 10.40.10.0/24
+    default_gw: 10.40.10.1

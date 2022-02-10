@@ -1,0 +1,7 @@
+---
+ switch-1:
+    network_name: Meraki Bothell
+    template_name: Bothell_Backup
+    device_name: Entertainment-Switch
+    device_type: MS220-8P
+    serial_no: Q2HP-2QN6-LJX8
